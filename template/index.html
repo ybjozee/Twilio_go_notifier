@@ -1,0 +1,30 @@
+{{define "body"}}
+<div class="container-fluid" style="width: 80%; margin: auto; padding: 5%">
+  <form action="/notify" method="post">
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Recipient phone number (in E.164 format)"
+        name="recipient"
+      />
+    </div>
+    <div class="mb-3">
+      <select name="medium" class="form-select">
+        {{range .Data}}
+        <option {{.}}>{{.}}</option>
+        {{end}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Message"
+        name="message"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{{end}}
