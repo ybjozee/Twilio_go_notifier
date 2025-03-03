@@ -8,10 +8,10 @@ import (
 type VoiceNotifier struct {
 }
 
-func (notifier VoiceNotifier) Notify(recipientNumber, message string) (string, error) {
+func (notifier VoiceNotifier) Notify(recipientPhoneNumber, message string) (string, error) {
 	params := &api.CreateCallParams{}
-	params.SetFrom(phoneNumber)
-	params.SetTo(recipientNumber)
+	params.SetFrom(twilioPhoneNumber)
+	params.SetTo(recipientPhoneNumber)
 
 	sayMessage, err := sayTwiml(message)
 	if err != nil {

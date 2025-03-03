@@ -2,16 +2,17 @@ package notifier
 
 import (
 	"fmt"
-	"github.com/twilio/twilio-go"
 	"os"
+
+	"github.com/twilio/twilio-go"
 )
 
 var client = twilio.NewRestClient()
-var phoneNumber = os.Getenv("TWILIO_PHONE_NUMBER")
-var whatsAppNumber = os.Getenv("TWILIO_WHATSAPP_NUMBER")
+var twilioPhoneNumber = os.Getenv("TWILIO_PHONE_NUMBER")
+var twilioWhatsAppNumber = os.Getenv("TWILIO_WHATSAPP_NUMBER")
 
 type Notifier interface {
-	Notify(recipientNumber, message string) (string, error)
+	Notify(recipientPhoneNumber, message string) (string, error)
 }
 
 func GetNotifier(medium string) (Notifier, error) {

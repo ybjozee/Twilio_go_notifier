@@ -7,11 +7,11 @@ import (
 type SMSNotifier struct {
 }
 
-func (notifier SMSNotifier) Notify(recipientNumber, message string) (string, error) {
+func (notifier SMSNotifier) Notify(recipientPhoneNumber, message string) (string, error) {
 	params := &api.CreateMessageParams{}
 	params.SetBody(message)
-	params.SetFrom(phoneNumber)
-	params.SetTo(recipientNumber)
+	params.SetFrom(twilioPhoneNumber)
+	params.SetTo(recipientPhoneNumber)
 
 	resp, err := client.Api.CreateMessage(params)
 	if err != nil {
