@@ -3,7 +3,6 @@ package main
 import (
 	"app/handler"
 	"fmt"
-	_ "github.com/joho/godotenv/autoload"
 	"net/http"
 )
 

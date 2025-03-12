@@ -2,14 +2,16 @@ package notifier
 
 import (
 	"fmt"
-	"os"
-
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/twilio/twilio-go"
+	"os"
 )
 
-var client = twilio.NewRestClient()
-var twilioPhoneNumber = os.Getenv("TWILIO_PHONE_NUMBER")
-var twilioWhatsAppNumber = os.Getenv("TWILIO_WHATSAPP_NUMBER")
+var (
+	client               = twilio.NewRestClient()
+	twilioPhoneNumber    = os.Getenv("TWILIO_PHONE_NUMBER")
+	twilioWhatsAppNumber = os.Getenv("TWILIO_WHATSAPP_NUMBER")
+)
 
 type Notifier interface {
 	Notify(recipientPhoneNumber, message string) (string, error)
